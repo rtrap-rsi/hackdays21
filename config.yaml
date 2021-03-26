@@ -5,16 +5,19 @@ spacy:
   useSaved: true # choose whatever to load already processed articles, saved from Spacy output as processedArticles.npy
 dataset: 'cleanedBig' # folder of articles
 topicModel:
-  loadFromFile: '' # load a saved model for topic modeling
+  loadFromFile: 'malletModel' # load a saved model for topic modeling
   saveAs: 'malletModel' # filename to save the model, if empty model is not saved
   use: "mallet" # model name: "lda", "mallet", "hdp"
+  calculateCoherence: false
   lda: # config for lda model algorithm
-    num_topics: 20
+    num_topics: 30
     random_state: 2
-    passes: 1
+    passes: 10
     update_every: 1
     chunksize: 1000
     alpha: 'auto'
   mallet: # config for lda model algorithm with mallet implementation
     num_topics: 20
     alpha: 50
+    iterations: 10000
+testDocument: 'cleanedBig/2387251.json'
