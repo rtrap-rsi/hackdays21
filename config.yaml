@@ -1,0 +1,20 @@
+logLevel: 'None' # Choose log level: ERROR, INFO, DEBUG
+malletHome: 'C:/users/rober/src/mallet-2.0.8' # if you want to use Mallet implementation of LDA algorithm please provide the executable folder path, download it from http://mallet.cs.umass.edu/download.php, java needed
+spacy:
+  model: 'it_core_news_lg' # choose the pretrained Spacy model, used to process the text before
+  useSaved: true # choose whatever to load already processed articles, saved from Spacy output as processedArticles.npy
+dataset: 'cleanedBig' # folder of articles
+topicModel:
+  loadFromFile: '' # load a saved model for topic modeling
+  saveAs: 'malletModel' # filename to save the model, if empty model is not saved
+  use: "mallet" # model name: "lda", "mallet", "hdp"
+  lda: # config for lda model algorithm
+    num_topics: 20
+    random_state: 2
+    passes: 1
+    update_every: 1
+    chunksize: 1000
+    alpha: 'auto'
+  mallet: # config for lda model algorithm with mallet implementation
+    num_topics: 20
+    alpha: 50
